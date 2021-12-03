@@ -5,6 +5,41 @@
 	  <script src="../src/secret.js" charset="utf-8"></script>
 	  <script src="../src/cloud.js" charset="utf-8"></script>
 	  <link rel="stylesheet" href="../src/style.css" />
+      <style>
+          body{
+              background-color: lightblue;
+          }
+          .red_button{
+                background-color: red;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+          }
+          }
+          .blue_button{
+                background-color: blue;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+          }
+          .button_container {
+              padding-top: 15px;
+              float:	left;
+              width:	100px;
+          }
+        </style>
 	</head>
 <body>
 
@@ -13,7 +48,27 @@
 		<service-airtable id="service_airtable" tablename="myProject"></service-airtable>
 	</div>
 
-  <h1>My Project (Remote Interface)</h1>
+  <h1>Leggo Draw (Remote Interface)</h1>
+
+  <p>This is the draft for the Remote Interface. Include: change drawing motor - Motor A, Mottor B; change rotating motor -- Motor C </p>
+
+  <h2> Remote Interface </h2>
+
+  <p> Motor A speed: </p>
+  <input type=range cloud_action='update' cloud_name='MotorA_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+
+  <p> Motor B speed: </p>
+  <input type=range cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+
+  <p> Rotating Motor Speed: </p>
+  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+
+  <p><button cloud_action='update' cloud_name='command'>Run</button></p>
+
+  <p><button cloud_action='update' cloud_name='command'>Stop</button></p>
+
+
+  <button class='red_button'> Red Button</button>
 
 	<!-- CREATE YOUR PROJECT HERE -->
 

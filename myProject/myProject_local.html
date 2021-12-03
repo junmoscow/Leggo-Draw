@@ -14,9 +14,30 @@
 		<service-spike id="service_spike"></service-spike>
 	</div>
 
-	<h1>My Project (Local Interface)</h1>
+	<h1>Leggo Draw (Local Interface)</h1>
 
-	<!-- CREATE YOUR PROJECT HERE -->
+	<div class="cloud_check">
+		<b><em>Monitor Cloud:</em></b>
+
+	  <div type="cloud_check" cloud_compare="equal" cloud_action="download_code">
+			<input type=text id="cloud_name" value="command">
+			<input type=text id="cloud_value" value="Run">
+      <input type=text id="cloud_action_val" value="0">
+			<textarea id="cloud_code"># MicroPython for LEGO Hardware (LEGO Education's SPIKE Prime)
+from spike import PrimeHub, Motor
+from spike.control import wait_for_seconds
+motorA = Motor('A')
+motorB = Motor('B')
+#motorC = Motor('C')
+motorA.start(CLOUD[MotorA_speed])
+motorB.start(CLOUD[MotorB_speed])
+#motorC.start(CLOUD[MotorC_speed])
+</textarea>
+
+			<input type=text id="cloud_reset" value="">
+    </div>
+
+	</div>
 
 	<hr>
 
