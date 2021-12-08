@@ -1,10 +1,10 @@
 <html>
 	<title>My Project (Local)</title>
 	<head>
-		<script src="https://cdn.jsdelivr.net/gh/tuftsceeo/SPIKE-Web-Interface/cdn/ServiceDock.js" charset="utf-8"></script>
-	  <script src="../src/secret.js" charset="utf-8"></script>
-	  <script src="../src/cloud.js" charset="utf-8"></script>
-	  <link rel="stylesheet" href="../src/style.css" />
+	    <script src="https://cdn.jsdelivr.net/gh/tuftsceeo/SPIKE-Web-Interface/cdn/ServiceDock.js" charset="utf-8"></script>
+	    <script src="../src/secret.js" charset="utf-8"></script>
+	    <script src="../src/cloud.js" charset="utf-8"></script>
+	    <link rel="stylesheet" href="../src/style.css" />
 	</head>
 <body>
 
@@ -28,15 +28,29 @@ from spike import PrimeHub, Motor
 from spike.control import wait_for_seconds
 motorA = Motor('A')
 motorB = Motor('B')
-#motorC = Motor('C')
+motorD = Motor('D')
 motorA.start(CLOUD[MotorA_speed])
 motorB.start(CLOUD[MotorB_speed])
-motorC.start(360, CLOUD[MotorC_speed])
-
-</textarea>
+motorD.run_for_degrees(360, CLOUD[MotorD_speed])
+        </textarea>
     </div>
-
-	</div>
+    <div type="cloud_check" cloud_compare="equal" cloud_action="download_code">
+			<input type=text id="cloud_name" value="command">
+			<input type=text id="cloud_value" value="Stop">
+      <input type=text id="cloud_action_val" value="0">
+			<textarea id="cloud_code"> #MicroPython for LEGO Hardware (LEGO Education's SPIKE Prime)
+from spike import PrimeHub, Motor
+from spike.control import wait_for_seconds
+motorA = Motor('A')
+motorB = Motor('B')
+motorD = Motor('D')
+motorA.stop()
+motorB.stop()
+motorD.stop()
+        </textarea>
+            </textarea>
+        </div> 
+</div>
 
 	<hr>
 
