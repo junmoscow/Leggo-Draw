@@ -1,0 +1,141 @@
+<html>
+	<title>My Project (Remote)</title>
+	<head>
+	<script src="https://cdn.jsdelivr.net/gh/tuftsceeo/SPIKE-Web-Interface/cdn/ServiceDock.js" charset="utf-8"></script>
+	<script src="../src/secret.js" charset="utf-8"></script>
+	<script src="../src/cloud.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="../src/style.css" />
+      <script type="text/javascript" src="draw.js"></script>
+	<script type="text/javascript">
+		// some defaults
+		var canvas;
+		var ctx;
+		
+		// drawing based on the following tutorial:
+		// https://levelup.gitconnected.com/html5-canvas-drawing-application-on-github-pages-beginner-friendly-tutorial-5d50b99adb6a 
+		window.addEventListener("load", () => {
+			// pointer to canvas
+			canvas = document.getElementById('draw_area');
+			// context
+			ctx = canvas.getContext('2d');
+			resize();
+
+			// internal functions
+			let painting = false;
+		
+			function startPosition(e) {
+				painting = true;
+				draw(e);
+			}
+			function finishedPosition() {
+				painting = false;
+				ctx.beginPath();
+			}
+			function draw(e) {
+				if (!painting) { return; }
+				ctx.lineWidth = 3;
+				ctx.lineCap = 'round';
+				ctx.lineTo(e.clientX, e.clientY);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(e.clientX, e.clientY);
+			}
+
+			// event listeners
+			canvas.addEventListener("mousedown", startPosition);
+			canvas.addEventListener("mouseup", finishedPosition);
+			canvas.addEventListener("mousemove", draw);
+
+            
+        });
+		// resize fix (for mouse x and y fix) from:
+		// https://stackoverflow.com/a/30684711 
+		window.addEventListener('resize', resize);
+		// resize canvas
+		function resize() {
+			ctx.canvas.width = window.innerWidth;
+			ctx.canvas.height = window.innerHeight;
+		}
+
+        function clearCanvas(){
+            ctx.clearRect(0,0, 600, 600);
+        }
+
+        function save_image() {
+			// toBlob discovered from:
+			// https://stackoverflow.com/questions/19032406/convert-html5-canvas-into-file-to-be-uploaded
+			// https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob
+			canvas.toBlob(function(blob) {
+				// using Cloudinary
+				// based on suggestion from:
+				// https://stackoverflow.com/questions/2642570/whats-a-good-image-hosting-site-with-an-api-to-allow-me-upload-images-from-my-w
+				const cloudinary = {
+					cloud_name: "dsilerwp2"
+				};
+				const url = "https://api.cloudinary.com/v1_1/" + cloudinary['cloud_name'] + "/image/upload";
+				const formData = new FormData();
+				// set formData to have blob file data
+				formData.append("file", blob);
+				// used Cloudinary's admin panel to configure an
+				// upload preset that is unsigned and puts files into a folder
+				// info: https://cloudinary.com/documentation/image_upload_api_reference
+				formData.append("upload_preset", "drawing_upload");
+				const options = {
+					method: "POST",
+					body: formData
+				};
+				fetch(url, options)
+					.then( res => res.json() )
+					.then( data => process_image_link(data) );
+			});
+
+		}
+		function process_image_link(json_data) {
+			// takes json_data input and extracts the image link
+			console.log('Cloudinary return data: ', json_data);
+			var image_link = json_data['secure_url'];
+			console.log('URL:', image_link);
+			// can now send the image URL (image_link) somewhere to be saved/displayed
+            cloud_update('new_image_path', image_link);
+		}
+
+        function strokeColor(name, value){
+            var color = value;
+            console.log('color:', color);
+            ctx.strokeStyle = color;
+            console.log(ctx.strokeStyle);
+        }
+
+	</script>
+     
+
+    <style>
+        body{
+            margin: 0 0 0 0;
+        }
+
+        #draw_area {
+            border: 1px solid black;
+        }
+        
+    </style>
+	</head>
+<body>
+
+	<!-- SERVICE DOCK -->
+	<div id="servicedock">
+		<service-airtable id="service_airtable" tablename="LeggoDraw"></service-airtable>
+	</div>
+
+
+<canvas id="draw_area"></canvas>
+
+<hb>
+
+<div type="cloud_check" cloud_compare="changes" cloud_action="run_js">
+		<input type=text id="cloud_name" value="color">
+		<input type=text id="cloud_action_val" value="strokeColor">
+    </div>
+
+</body>
+</html>
