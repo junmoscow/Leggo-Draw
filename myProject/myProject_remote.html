@@ -1,5 +1,5 @@
 <html>
-	<title>My Project (Remote)</title>
+	<title>Leggo Draw</title>
 	<head>
 	<script src="https://cdn.jsdelivr.net/gh/tuftsceeo/SPIKE-Web-Interface/cdn/ServiceDock.js" charset="utf-8"></script>
 	<script src="../src/secret.js" charset="utf-8"></script>
@@ -16,6 +16,11 @@
 			// value will be the URL of the image
 			// - set the local HTML img element's src to be the image URL
 			document.getElementById('remote_tag_to_update').src = value;
+        }
+
+        function reset(){
+            cloud_update("color", "white");
+            cloud_update("command", "reset");
         }
 		
 
@@ -234,13 +239,25 @@
         #saveImage{
             display: inline-block;
 	        width: 120px;
-        	height: 30px;
+        	height: 50px;
         	margin: auto;
         	border: 1px solid black;
-        	font-size: 20px;
+        	font-size: 30px;
         	color: black;
         	background-color: pink;
         }
+
+        #reset{
+            display: inline-block;
+	        width: 120px;
+        	height: 40px;
+        	margin: auto;
+        	border: 1px solid black;
+        	font-size: 30px;
+        	color: black;
+        	background-color: white;
+        }
+
 
         
     </style>
@@ -253,7 +270,7 @@
 	</div>
 
 <hr>
-  <h1>Leggo Draw (Remote Interface)</h1>
+  <h1>Leggo Draw</h1>
 
 <div class ="motorControls">
     <h2> MOTOR CONTROLS</h2>
@@ -264,7 +281,7 @@
   <input type=range cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
 
   <h3 class="h3rotating"> ROTATING MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-100" cloud_max="100" min='-100' max='100' value='0' />
 
   <img src="./img/legg-draw_diagram.jpg" width="250" height="auto">
 </div>
@@ -272,7 +289,6 @@
 <div class ="colorControls">
     <h2> COLOR</h2>
     <button id="blackColor" onclick = 'cloud_update("color", "black")''></button> <br>
-    <button id="whiteColor" onclick = 'cloud_update("color", "white")'></button> <br>
     <button id="redColor" onclick = 'cloud_update("color", "red")'></button> <br>
     <button id="orangeColor" onclick = 'cloud_update("color", "orange")'> </button> <br>
     <button id="yellowColor" onclick = 'cloud_update("color", "yellow")'> </button> <br>
@@ -284,12 +300,15 @@
 
 <div class="run">
       <p><button id="run" cloud_action='update' cloud_name='command'>RUN</button></p>
-      <p><button id="stop" cloud_action='update' cloud_name='command'>STOP</button></p>
-      <button id='saveImage' cloud_action='update' cloud_name='immage_command'>Save</button>
+      <p><button id="stop" cloud_action='update' cloud_name='command'>STOP</button></p><br><br>
+      <button id='saveImage' cloud_action='update' cloud_name='immage_command'>Save</button><br>
+      <button id = "reset" onclick='reset()'>Reset</button>
 </div>
 
-<div class="displayImage"> 
-    <img id='remote_tag_to_update' width="800" height="auto" src=''>
+<div class="displayImage">
+    <h3> Image displayed here: </h3> 
+    <img id='remote_tag_to_update' width="500" height="auto" src=''>
+    <h3> Left click image and save to computer </h3>
 </div>
 
 <br><br><br><br><br><br>

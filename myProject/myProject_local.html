@@ -21,7 +21,7 @@
 
 	  <div type="cloud_check" cloud_compare="equal" cloud_action="download_code">
 			<input type=text id="cloud_name" value="command">
-			<input type=text id="cloud_value" value="Run">
+			<input type=text id="cloud_value" value="RUN">
       <input type=text id="cloud_action_val" value="0">
 			<textarea id="cloud_code"># MicroPython for LEGO Hardware (LEGO Education's SPIKE Prime)
 from spike import PrimeHub, Motor
@@ -29,14 +29,15 @@ from spike.control import wait_for_seconds
 motorA = Motor('A')
 motorB = Motor('B')
 motorD = Motor('D')
+motorD.start_at_power(100)
 motorA.start(CLOUD[MotorA_speed])
 motorB.start(CLOUD[MotorB_speed])
-motorD.run_for_degrees(360, CLOUD[MotorD_speed])
+motorD.start(CLOUD[MotorD_speed])
         </textarea>
     </div>
     <div type="cloud_check" cloud_compare="equal" cloud_action="download_code">
 			<input type=text id="cloud_name" value="command">
-			<input type=text id="cloud_value" value="Stop">
+			<input type=text id="cloud_value" value="STOP">
       <input type=text id="cloud_action_val" value="0">
 			<textarea id="cloud_code"> #MicroPython for LEGO Hardware (LEGO Education's SPIKE Prime)
 from spike import PrimeHub, Motor
@@ -50,6 +51,19 @@ motorD.stop()
         </textarea>
             </textarea>
         </div> 
+    <div type="cloud_check" cloud_compare="equal" cloud_action="download_code">
+			<input type=text id="cloud_name" value="command">
+			<input type=text id="cloud_value" value="reset">
+      <input type=text id="cloud_action_val" value="0">
+			<textarea id="cloud_code"># MicroPython for LEGO Hardware (LEGO Education's SPIKE Prime)
+from spike import PrimeHub, Motor
+from spike.control import wait_for_seconds
+motorA = Motor('A')
+motorB = Motor('B')
+motorA.run_to_position(0)
+motorB.run_to_postion(0)
+        </textarea>
+    </div>
 </div>
 
 	<hr>
