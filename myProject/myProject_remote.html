@@ -23,6 +23,13 @@
             cloud_update("command", "reset");
         }
 		
+        var leftMotorSlider = document.getElementById("leftRange");
+        var leftMotorOutput = document.getElementById("leftValue");
+        leftMotorOutput.innerHTML = leftMotorSlider.value;
+
+        leftMotorSlider.oninput = function(){
+            leftMotorOutput.innerHTML = this.value;
+        }
 
 	</script>
      
@@ -31,231 +38,6 @@
         body{
               background-color: lightblue;
               margin: 0 0 0 0;
-        }
-
-        #clear{
-            display: inline-block;
-	        width: 120px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 20px;
-        }
-
-        .colorControls{
-            display: inline-grid;
-            border: none;
-            margin: 20px
-        }
-
-        .motorControls{
-            display: inline-grid;
-            border: none;
-            margin: 20px;
-        }
-        
-        .displayImage{
-            display:inline-grid;
-            background-color: white;
-            margin: 20px;
-            float: right;
-        }
-
-        #blackColor {
-	        display: inline-block;
-	        width: 30px;
-	        height: 30px;
-	        margin: auto;
-        	border: 1px solid black;
-	        font-size: 20px;
-	        color: white;
-	        background-color: black;
-            border-radius: 50%;
-        }
-
-        #whiteColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 50%;
-        }
-
-        #redColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: red;
-            border-radius: 50%;
-        }
-
-        #orangeColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: orange;
-            border-radius: 50%;
-        }
-
-        #blueColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: blue;
-            border-radius: 50%;
-        }
-
-        #yellowColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: yellow;
-            border-radius: 50%;
-        }
-
-        #purpleColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: purple;
-            border-radius: 50%;
-        }
-        
-        #greenColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: green;
-            border-radius: 50%;
-        }
-
-        h1{
-            text-align:center;
-        }
-
-        h2{
-            text-align: center;
-            background-color: #0c2454;
-            color: white;
-        }
-
-        h3{
-            text-align: center;
-            font-size: 20px;
-            color: black;
-        }
-
-        .h3left{
-            background-color: orange; 
-        }
-
-        .h3right{
-            background-color: yellow;
-        }
-
-        .h3rotating{
-            background-color: red;
-        }
-
-
-        #colorLabel{
-            margin:30px;
-            text-align: center;
-        }
-
-        .run{
-            display: inline-grid;
-            border: none;
-            margin: 30px;
-        }
-
-        #run{
-            display: inline-block;
-	        width: 120px;
-        	height: 60px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 40px;
-        	color: white;
-        	background-color: green;
-            border-radius: 20px;
-        }
-       
-        #stop{
-            display: inline-block;
-	        width: 120px;
-        	height: 60px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 40px;
-        	color: white;
-        	background-color: red;
-            border-radius: 20px;
-        }
-
-        #print{
-            display: inline-block;
-	        width: 120px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 20px;
-        }
-
-        #saveImage{
-            display: inline-block;
-	        width: 120px;
-        	height: 50px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 30px;
-        	color: black;
-        	background-color: pink;
-        }
-
-        #reset{
-            display: inline-block;
-	        width: 120px;
-        	height: 40px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 30px;
-        	color: black;
-        	background-color: white;
         }
 
 
@@ -275,13 +57,14 @@
 <div class ="motorControls">
     <h2> MOTOR CONTROLS</h2>
     <h3 class="h3left"> LEFT MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorA_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+  <input type=range cloud_action='update' cloud_name='MotorA_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider' id="leftRange"/>
+  <!--<p> Value: <span id="leftValue"></span></p>-->
 
   <h3 class="h3right"> RIGHT MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' />
+  <input type=range cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider'/>
 
   <h3 class="h3rotating"> ROTATING MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-100" cloud_max="100" min='-100' max='100' value='0' />
+  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-100" cloud_max="100" min='-100' max='100' value='0' class='slider' /> <br>
 
   <img src="./img/legg-draw_diagram.jpg" width="250" height="auto">
 </div>
@@ -311,7 +94,7 @@
     <h3> Left click image and save to computer </h3>
 </div>
 
-<br><br><br><br><br><br>
+<br><br><br><br><br>
 
 <hr>
 
