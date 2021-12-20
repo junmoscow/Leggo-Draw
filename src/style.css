@@ -17,7 +17,7 @@ https://www.w3schools.com/css/default.asp
     /*Give your button block some style!
     Add color, change the border, and
     change the size using CSS styling*/
-    background-color:lightblue;
+    background-color:rgb(220, 231, 233);
     border:solid;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -107,16 +107,22 @@ https://www.w3schools.com/css/default.asp
   background-color: lightyellow;
 }
 
+.google_translate_element{
+    display: block;
+    align-content: center;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 15px;
+  height: 10px;
   border-radius: 5px;  
   background: whitesmoke;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  margin: none;
 }
 
 .slider::-webkit-slider-thumb {
@@ -124,8 +130,8 @@ https://www.w3schools.com/css/default.asp
   appearance: none;
   width: 25px;
   height: 25px;
-  border-radius: 50%; 
-  background: black;
+  border-radius: 50%;
+  background: black; 
   cursor: pointer;
 }
 
@@ -137,227 +143,209 @@ https://www.w3schools.com/css/default.asp
   cursor: pointer;
 }
 
+.rangeField{
+    width: 100%;
+    height: 20px; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: none;
+}
+
+.step{
+    width: 80px;
+    height: 25px;
+    text-align: left;
+    font-size: 20px;
+    background-color: lightskyblue;
+    display: block;
+}
+
+#minValue{
+    display: block;
+    text-align: right;
+    font-size: 30px;
+}
+
+#maxValue{
+    display: block;
+    text-align: left;
+    font-size: 30px;
+}
+
+#colorBox{
+    display: flex;
+	width: 40px;
+	height: 40px;
+    border-radius: 50%;
+    border: 1px black;
+    margin-bottom: 5px;
+    place-self: center;
+}
+
+.displayColor{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px  black;
+    background-color: white;
+    margin: auto;
+    margin-top: 10%;
+    display: block;
+}
+
+.colorPanel{
+    display: grid;
+    grid-template-columns: 1fr auto ;
+}
+
+.displayColorBox{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    font-size: 20px;
+    color:#0c2454;
+    display: inline-block;
+    align-items: center;
+}
+
+.buttonCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 #clear{
-            display: inline-block;
-	        width: 120px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 20px;
-        }
+    display: inline-block;
+	width: 120px;
+    height: 30px;
+    margin: auto;
+    border: 1px solid black;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    border-radius: 20px;
+}
 
-        .colorControls{
-            display: inline-grid;
-            border: none;
-            margin: 20px
-        }
+.controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
 
-        .motorControls{
-            display: inline-grid;
-            border: none;
-            margin: 20px;
-        }
+.ControlBox{
+    display: inline-grid;
+    margin: 20px;
+}
+
+.colorControls{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.imageControls{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.motorControls{
+    display: inline-grid;
+    margin: 20px;
+
+}
         
-        .displayImage{
-            display:inline-grid;
-            background-color: white;
-            margin: 20px;
-            float: right;
-        }
+.displayImage{
+    display:inline-grid;
+    background-color: white;
+    margin: 20px;
+    float: right;
+}
 
-        #blackColor {
-	        display: inline-block;
-	        width: 30px;
-	        height: 30px;
-	        margin: auto;
-        	border: 1px solid black;
-	        font-size: 20px;
-	        color: white;
-	        background-color: black;
-            border-radius: 50%;
-        }
-
-        #whiteColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 50%;
-        }
-
-        #redColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: red;
-            border-radius: 50%;
-        }
-
-        #orangeColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: orange;
-            border-radius: 50%;
-        }
-
-        #blueColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: blue;
-            border-radius: 50%;
-        }
-
-        #yellowColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: yellow;
-            border-radius: 50%;
-        }
-
-        #purpleColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: purple;
-            border-radius: 50%;
-        }
         
-        #greenColor {
-	        display: inline-block;
-	        width: 30px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: white;
-        	background-color: green;
-            border-radius: 50%;
-        }
 
-        h1{
-            text-align:center;
-        }
+h1{
+    text-align:center;
+}
 
-        h2{
-            text-align: center;
-            background-color: #0c2454;
-            color: white;
-        }
+h2{
+    text-align: center;
+    color: #0c2454;
+}
 
-        h3{
-            text-align: center;
-            font-size: 20px;
-            color: black;
-        }
-
-        .h3left{
-            background-color: orange; 
-        }
-
-        .h3right{
-            background-color: yellow;
-        }
-
-        .h3rotating{
-            background-color: red;
-        }
+h3{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    display: inline-block;
+    margin: 10px;
+    width: 360px;
+}
 
 
-        #colorLabel{
-            margin:30px;
-            text-align: center;
-        }
 
-        .run{
-            display: inline-grid;
-            border: none;
-            margin: 30px;
-        }
+.run{
+    display: inline-grid;
+    border: none;
+    margin: none;
+}
 
-        #run{
-            display: inline-block;
-	        width: 120px;
-        	height: 60px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 40px;
-        	color: white;
-        	background-color: green;
-            border-radius: 20px;
-        }
+#run{
+    display: inline-block;
+	width: 120px;
+    height: 60px;
+    margin: none;
+    border: 1px solid black;
+    font-size: 40px;
+    color: white;
+    background-color: green;
+    border-radius: 20px;
+}
        
-        #stop{
-            display: inline-block;
-	        width: 120px;
-        	height: 60px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 40px;
-        	color: white;
-        	background-color: red;
-            border-radius: 20px;
-        }
+#stop{
+    display: inline-block;
+	width: 120px;
+    height: 60px;
+    margin: none;
+    border: 1px solid black;
+    font-size: 40px;
+    color: white;
+    background-color: red;
+    border-radius: 20px;
+}
 
-        #print{
-            display: inline-block;
-	        width: 120px;
-        	height: 30px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 20px;
-        	color: black;
-        	background-color: white;
-            border-radius: 20px;
-        }
 
-        #saveImage{
-            display: inline-block;
-	        width: 120px;
-        	height: 50px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 30px;
-        	color: black;
-        	background-color: pink;
-        }
+#saveImage{
+    display: inline-block;
+	width: 120px;
+    height: 50px;
+    margin: none;
+    border: 1px solid black;
+    font-size: 30px;
+    color: black;
+    background-color: pink;
+}
 
-        #reset{
-            display: inline-block;
-	        width: 120px;
-        	height: 40px;
-        	margin: auto;
-        	border: 1px solid black;
-        	font-size: 30px;
-        	color: black;
-        	background-color: white;
-        }
+#reset{
+    display: inline-block;
+	width: 120px;
+    height: 50px;
+    margin: none;
+    border: 1px solid black;
+    font-size: 30px;
+    color: black;
+    background-color: white; 
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

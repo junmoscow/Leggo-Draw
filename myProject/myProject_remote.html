@@ -8,9 +8,6 @@
     <script type="text/javascript" src="draw.js"></script>
 	<script type="text/javascript">
 
-
-
-
 		function display_image(name, value) {
 			// name will be 'new_image_path'
 			// value will be the URL of the image
@@ -22,21 +19,15 @@
             cloud_update("color", "white");
             cloud_update("command", "reset");
         }
-		
-        var leftMotorSlider = document.getElementById("leftRange");
-        var leftMotorOutput = document.getElementById("leftValue");
-        leftMotorOutput.innerHTML = leftMotorSlider.value;
 
-        leftMotorSlider.oninput = function(){
-            leftMotorOutput.innerHTML = this.value;
-        }
+        
 
 	</script>
-     
+
 
     <style>
         body{
-              background-color: lightblue;
+              background-color: rgb(220, 231, 233);
               margin: 0 0 0 0;
         }
 
@@ -52,40 +43,95 @@
 	</div>
 
 <hr>
-  <h1>Leggo Draw</h1>
+<h1>Leggo Draw</h1>
+
+<div id="google_translate_element" style="text-align:center;"></div>
+
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
 
 <div class ="motorControls">
-    <h2> MOTOR CONTROLS</h2>
-    <h3 class="h3left"> LEFT MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorA_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider' id="leftRange"/>
-  <!--<p> Value: <span id="leftValue"></span></p>-->
+    <div class="step"> STEP 1: </div>
+    <h2> CHOOSE MOTOR SPEED </h2>
+    <h3 style= "background-color: yellow;"> LEFT MOTOR SPEED: <span id="MotorA_speed"></span> </h3> 
+    <div class="rangeField">
+        <div class="minValue"> -50 </div>
+        <input type="range" cloud_action='update' cloud_name='MotorA_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider' id="MotorA_range">
+        <div class="maxValue"> 50 </div>
+    </div>
 
-  <h3 class="h3right"> RIGHT MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider'/>
+    <h3 style="background-color: orange;"> RIGHT MOTOR SPEED: <span id="MotorB_speed"></span> </h3>
+    <div class = "rangeField">
+        <div class = "minValue"> -50 </div>
+        <input type="range" cloud_action='update' cloud_name='MotorB_speed' cloud_min="-50" cloud_max="50" min='-50' max='50' value='0' class='slider' id="MotorB_range">
+        <div class="maxValue"> 50 </div>
+    </div>
 
-  <h3 class="h3rotating"> ROTATING MOTOR SPEED: </h3>
-  <input type=range cloud_action='update' cloud_name='MotorC_speed' cloud_min="-100" cloud_max="100" min='-100' max='100' value='0' class='slider' /> <br>
+    <h3 style="background-color: red;"> ROTATING MOTOR SPEED: <span id="MotorD_speed"></span></h3>
+    <div class = "rangeField">
+        <div class="minValue"> -100 </div>
+        <input type="range" cloud_action='update' cloud_name='MotorD_speed' cloud_min="-100" cloud_max="100" min='-100' max='100' value='0' class='slider'  id="MotorD_range">
+        <div class="maxValue"> 100 </div>
+    </div>
+    <br>
 
-  <img src="./img/legg-draw_diagram.jpg" width="250" height="auto">
+    <img src="./img/legg-draw_diagram.jpg" width="250" height="auto" class="center">
 </div>
-  
-<div class ="colorControls">
-    <h2> COLOR</h2>
-    <button id="blackColor" onclick = 'cloud_update("color", "black")''></button> <br>
-    <button id="redColor" onclick = 'cloud_update("color", "red")'></button> <br>
-    <button id="orangeColor" onclick = 'cloud_update("color", "orange")'> </button> <br>
-    <button id="yellowColor" onclick = 'cloud_update("color", "yellow")'> </button> <br>
-    <button id="greenColor" onclick = 'cloud_update("color", "green")'> </button> <br>
-    <button id="blueColor" onclick = 'cloud_update("color", "blue")'> </button> <br>
-    <button id="purpleColor" onclick = 'cloud_update("color", "purple")'> </button> <br>
-    <!--<button id='clear'>Clear </button>-->
-</div>
 
-<div class="run">
-      <p><button id="run" cloud_action='update' cloud_name='command'>RUN</button></p>
-      <p><button id="stop" cloud_action='update' cloud_name='command'>STOP</button></p><br><br>
-      <button id='saveImage' cloud_action='update' cloud_name='immage_command'>Save</button><br>
-      <button id = "reset" onclick='reset()'>Reset</button>
+
+<div class ="ControlBox">
+    <div class="step"> STEP 2:</div>
+    <h2> CHOOSE COLOR</h2>
+    <div class="colorPanel">
+        <div class ="colorControls">
+            <button id="colorBox" style="background-color: black;" onclick = 'cloud_update("color", "black")''></button> 
+            <button id="colorBox" style="background-color: red;" onclick = 'cloud_update("color", "red")'></button> 
+            <button id="colorBox" style="background-color: orange;" onclick = 'cloud_update("color", "orange")'> </button> 
+            <button id="colorBox" style="background-color: yellow;" onclick = 'cloud_update("color", "yellow")'> </button>
+            <button id="colorBox" style="background-color: green;" onclick = 'cloud_update("color", "green")'> </button> 
+            <button id="colorBox" style="background-color: blue;" onclick = 'cloud_update("color", "blue")'> </button> 
+            <button id="colorBox" style="background-color: purple;" onclick = 'cloud_update("color", "purple")'> </button>
+            <button id="colorBox" style="background-color: pink;" onclick = 'cloud_update("color", "pink")'> </button>
+        </div>
+        <div class="displayColorBox">
+            <div style="background-color:white; width:auto; text-align: center; font-size: 12px; display:block;">CURRENT COLOR:</div>
+            <div id="displayCurrentColor" class="displayColor"></div>
+        </div>
+    </div>
+    <p> *NOTE: you can change color while robot is running </p>
+
+    <br><br>
+
+    <div class="run">
+        <div class="imageControls">
+            <div>
+                <div class="step">STEP 3:</div>
+                <button id="run" cloud_action='update' cloud_name='command'>RUN</button>
+                <div class="step" style = "width: auto; background-color: rgb(220, 231, 233)"> Run Robot</div>
+            </div>
+            <div>
+                <div class="step">STEP 4:</div>
+                <button id="stop" cloud_action='update' cloud_name='command'>STOP</button>
+                <div class="step" style = "width: auto; background-color: rgb(220, 231, 233)">Stop when ready</div>
+            </div>
+            <div>
+                <div class="step">STEP 5:</div>
+                <button id='saveImage' cloud_action='update' cloud_name='immage_command'>Save</button>
+                <div class="step" style="width: auto; background-color: rgb(220, 231, 233)">Display image in window </div>
+            </div>
+            <div>
+                <div class="step">STEP 6:</div>
+                <button id = "reset" onclick='reset()'>Reset</button>
+                <div class="step" style="width: auto; background-color: rgb(220, 231, 233)">Reset image for next user </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="displayImage">
@@ -103,5 +149,48 @@
 		<input type=text id="cloud_action_val" value="display_image">
     </div>
 
+<div type="cloud_check" cloud_compare="changes" cloud_action="run_js">
+		<input type=text id="cloud_name" value="color">
+		<input type=text id="cloud_action_val" value="currentColor">
+    </div>
+
+
 </body>
+
+<script type="text/javascript">
+    var motorA_slider = document.getElementById("MotorA_range");
+    var motorA_output = document.getElementById("MotorA_speed");
+    motorA_output.innerHTML = motorA_slider.value;
+
+    motorA_slider.oninput = function() {
+        motorA_output.innerHTML = this.value;
+    }
+
+    var motorB_slider = document.getElementById("MotorB_range");
+    var motorB_output = document.getElementById("MotorB_speed");
+    motorB_output.innerHTML = motorB_slider.value;
+
+    motorB_slider.oninput = function() {
+        motorB_output.innerHTML = this.value;
+    }
+
+    var motorD_slider = document.getElementById("MotorD_range");
+    var motorD_output = document.getElementById("MotorD_speed");
+    motorD_output.innerHTML = motorD_slider.value;
+
+    motorD_slider.oninput = function() {
+        motorD_output.innerHTML = this.value;
+    }
+
+    function currentColor(name, value){
+        var current = value;
+        console.log('color:', current);
+        document.getElementById("displayCurrentColor").style.backgroundColor = current;
+    }
+    
+</script>
+
+
+
+
 </html>
